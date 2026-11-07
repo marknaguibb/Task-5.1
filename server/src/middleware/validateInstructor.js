@@ -9,7 +9,7 @@ const loginSchema = Joi.object({
 const searchSchema = Joi.object({
   name: Joi.string().trim().max(50).allow(''),
   department: Joi.string().trim().max(50).allow('')
-});
+}).options({ stripUnknown: true });
 
 const validate = (schema, source) => (req, res, next) => {
   const { value, error } = schema.validate(req[source]);
